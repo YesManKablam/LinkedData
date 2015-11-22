@@ -26,3 +26,6 @@ Next request is to delete the requested County from the database. Right now, it'
 Last thing is the add function. Using the console window, you can add a new entry to the households dataset. The console is being used because I don't think the end user should be able to access this function, so it should only be accessable by the person running the server.
 
 #Update 4: The one I couldn't call UPDATEAMANIA for legal reasons.
+Added a menu to the console. It will allow you to either add a new entry, or delete an entry. It also allows you to select which table you are added or deleting from. Using the system's error handling, it can drop you back to the top of the menu if something foes wrong, however the way it works for the multiple choices is a little funky, so it only really works for the entry/deletion parts, e.g. if you were to press CTRL + C when deleting something from the table, it'll tell you that you canceled and then prompt you with the original options.
+
+Setup proper JOINs for the individual entry request. Also added a default route that displays everything.
