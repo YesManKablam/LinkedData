@@ -54,3 +54,8 @@ Last thing is the add function. Using the console window, you can add a new entr
 Added a menu to the console. It will allow you to either add a new entry, or delete an entry. It also allows you to select which table you are added or deleting from. Using the system's error handling, it can drop you back to the top of the menu if something foes wrong, however the way it works for the multiple choices is a little funky, so it only really works for the entry/deletion parts, e.g. if you were to press CTRL + C when deleting something from the table, it'll tell you that you canceled and then prompt you with the original options.
 
 Setup proper JOINs for the individual entry request. Also added a default route that displays everything.
+
+##Update 5: Just Because You're Paranoid, Doesn't Mean They Aren't Out to Get You##
+Big update to the README.md file. It now includes a guide on how to use the API. Also changed a very small part of the cars.js file. I noticed that one of the entry options didn't tel you what it wanted. Simple fix there. Also deleted a commented out line of coded that was there for test. 
+
+This should be the final update. Good. I'm running out of names for these things.
