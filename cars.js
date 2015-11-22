@@ -7,8 +7,7 @@ var bodyparser = require('body-parser');
 var prompt = require('prompt');
 var fs = require('fs');
 var app = express();
-var path = require("path");
-app.use(bodyparser.json()); // support json encoded bodies
+app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 //  Reads in the .json files
@@ -34,7 +33,7 @@ db.serialize(function()
               );
   }
   stmt.finalize();
-  //================================================================
+//================================================================
 
 //  Creating the second Database for the amount of road accidents in 2011
 //================================================================
@@ -52,11 +51,9 @@ db.serialize(function()
 });
 //================================================================
 
-
 // Database editing using prompts go here
 //================================================================
 prompt.start();     //  Start the prompt package
-
 
 console.log("Welcome to the Road accidents API. If you wish to enter a new record, please prease 1. If you wish to delete a record, please press 2.");      //  Welcome message
 menu();     //  Calls the top menu function
@@ -97,6 +94,7 @@ function newHousehould() {
 }
 
 function newRoadAccidents() {
+  console.log("Please enter the ID, County name, number of Deaths, and the number of Injuries.");
   prompt.get(['id', 'county', 'deaths', 'injuries'], function(err, result){
     if (err) { return onErr(err); }
     console.log('You typed in: ' + result.id + ' ' + result.county + ' ' + result.deaths + ' ' + result.injuries );
@@ -153,7 +151,7 @@ function onErr(err){
 //================================================================
 app.get('/', function(req, res){
   db.all("SELECT households.*, roadaccidents.* FROM households INNER JOIN roadaccidents ON households.County = roadaccidents.County", function(err, row){     //  Get's everything from both tables, joining them by County
-    output = JSON.stringify(row, null, '\t');      // Converts the ouptu string from above into JSON and adds a tab space for formating.
+    output = JSON.stringify(row, null, '\t');      // Converts the output string from above into JSON and adds a tab space for formating.
     res.sendStatus(output);     //  Outputs the converted data to the screen
   })
 })
@@ -174,7 +172,6 @@ app.get('/allRoadAccidents', function(req, res){
 
 app.get('/cty/:cty', function(req, res){
     db.all('SELECT households.*, roadaccidents.* FROM households, roadaccidents ON households.County = roadaccidents.County AND (households.County LIKE "'+req.params.cty+'")', function(err, row){     //  This will return only the requested county from both tables and then converts and display the result.
-    //WHERE County LIKE "' + req.params.cty + '"',
       output = JSON.stringify(row, null, '\t');
       res.sendStatus(output);
     })
